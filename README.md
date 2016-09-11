@@ -108,13 +108,13 @@ $ heroku addons:create scheduler:standard
 
 Visit the resources dashboard for the Sabayon app you created `https://dashboard.heroku.com/apps/letsencrypt-app-for-<name>/resources` (replace `letsencrypt-app-for-<name>` with your app's name).
 
-Then click on "Heroku Scheduler" and add a job to run `bin/sabayon` daily.
+Then click on "Heroku Scheduler" and add a job to run `cmd/sabayon` daily.
 
 ![heroku scheduler](docs/scheduler.png)
 
-The command `bin/sabayon` will attempt to get a new cert when your existing certificiate expires (every 90 days) if the certificate is not close to expiring it will exit so it does not renew your certificiate every day.
+The command `cmd/sabayon` will attempt to get a new cert when your existing certificiate expires (every 90 days) if the certificate is not close to expiring it will exit so it does not renew your certificiate every day.
 
-Once you configure your application you'll want to manually run `heroku run bin/sabayon -a letsencrypt-app-for-<name>` and watch the output to verify a certificate is created and registered correctly. This is covered after "configuring your application".
+Once you configure your application you'll want to manually run `heroku run cmd/sabayon -a letsencrypt-app-for-<name>` and watch the output to verify a certificate is created and registered correctly. This is covered after "configuring your application".
 
 ## Configuring your primary application
 
@@ -356,12 +356,12 @@ with `$ACME_KEY` as the content.
 
 Please add any other language/framework by opening a Pull Request.
 
-## Manually run bin/sabayon
+## Manually run cmd/sabayon
 
-Make sure you have scheduler added to your app and set up to run `bin/sabayon` daily. Now you'll want to manually run `bin/sabayon` to ensure a certificate can be provisioned:
+Make sure you have scheduler added to your app and set up to run `cmd/sabayon` daily. Now you'll want to manually run `cmd/sabayon` to ensure a certificate can be provisioned:
 
 ```
-$ heroku run bin/sabayon -a letsencrypt-app-for-<name>
+$ heroku run cmd/sabayon -a letsencrypt-app-for-<name>
 ```
 
 The output should look something like:
